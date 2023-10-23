@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<!-- the head tag gives you information about a web page
+The <meta> tag creates a responsive website,  
+It will set the viewport of your page, which will give 
+the browser instructions on how to control the page's 
+dimensions and scaling.-->
+
+<!-- the head tag gives you inforrmation about a web page -->
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport"
+     content="width=device-width, initial-scale=1"/>
+
+     <!-- Writes Freelance Forum -->
+     <title> Freelance Forum </title>
+
+    <!-- Links to my javascript file-->
+    <script src = "index.js"> </script> 
+
+    <!-- Uses Internal CSS to color the backgroud of my page-->
+        <style>
+               body{
+                    background:repeating-linear-gradient(rgb(3, 74, 141),rgba(5, 47, 234, 0.798));
+                    background-repeat:no-repeat;
+                    background-attachment:fixed;
+                    border-color:rgba(5, 155, 248, 0.38);
+                    border-width:20px;
+                    }
+                .wrapper
+                    {
+                    display:grid;
+                    grid-template-rows:180px 150px auto;
+                    }
+
+                .wrapper>div:nth-child(1) 
+                    { 
+                    background:rgb(101, 155, 225) ;
+                    }
+
+                .wrapper>div:nth-child(2) 
+                    {
+                    background:rgb(171, 230, 244);
+                    }
+
+                .wrapper>div:nth-child(3) 
+                    {
+                    background:rgb(220, 235, 238);
+                    }
+                        
+        </style>
+
+</head>
+
+<body>
+    <header>
+        <!--Centers and Creates a main header Freelancer Forum -->
+        <!-- Also colors header re using inline css -->
+      <!--<center>
+             <h1 style="color: blue;font-size:40px">
+            FREELANCER FORUM </h1>
+        </center>
+    -->
+    </header>
+<div class="wrapper">
+
+
+    <div style=" width:100%;
+                 
+                 height:auto;
+                 margin-left:0cqmin;
+                 border-width: 20px;
+                 font-size:80px;
+                 font-weight: 200px;
+                 border-color:black;
+                 border:100px, solid;
+                 background-color:rgb(90, 166, 243);
+                 font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 
+                 'Lucida Sans', Arial, sans-serif;
+                 text-align:center;">
+                
+                <center><p>Freelancer Forum</p></center>   
+                
+    </div>
+    
+
+    <div style=" width:100%;
+                 height:auto;
+                 border-width: 10px;
+                 font-size: large;
+                 border-color:black;
+                 border:3px, solid;
+                 background-color:rgb(90, 166, 243);
+                 font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"> 
+    
+                <center><p> The average starting price is :<p id="averagePrice"></p></center>
+    </div>
+
+<center>
+    <div style="width:50%; height: auto; border:3px solid;
+                border-color:antiquewhite; 
+                border-width: 10px;
+                
+                background-color:white;
+                font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 
+                 'Lucida Sans', Arial, sans-serif;text-align:center;">
+
+                <center><h3 > Available Freeelancers </h3></center>
+
+            <!-- Centers and creates a table that will contains the data (freelancers Name, 
+                  Occupation and Starting Price)-->
+    <center>
+            <table>
+                  <tr>
+                      <th>Name  </th>
+                      <th>Occupation </th>
+                      <th>Starting Price </th>
+                  </tr>
+
+                  <tr>
+                   
+                       <td>   <p id="dataDisplayName" > </p>  </td>
+                       <td>  <p id="dataDisplayOc">     </p>  </td>
+                       <td>  <p id="dataDisplaySP">     </p>  </td>
+                  </tr>
+            </table>
+    </center>           
+        
+    </div>
+</center>
+    
+</div>
+
+
+<script>
+
+const items =[{Name:"Alice ",Occupation:" Writer ",StartingPrice:30},
+              {Name:"Bob ",Occupation:" Teacher ",StartingPrice:50},
+              {Name:"Carol ",Occupation:" Programmer ",StartingPrice:70}             
+             ];
+
+   
+// loops through items to displays Names using ID's       
+list3=document.querySelector("#dataDisplayName")
+     
+     items.forEach((item) => {
+         let p = document.createElement("p");
+         p.innerText = item.Name;
+         list3.append(p);
+     });
+
+// loops through items to displays Occupation using ID's   
+list4=document.querySelector("#dataDisplayOc")
+     
+     items.forEach((item) => {
+         let p = document.createElement("p");
+         p.innerText = item.Occupation;
+         list4.append(p);
+     });
+
+// loops through items to displays Starting Price using ID's   
+list5=document.querySelector("#dataDisplaySP")
+     
+        items.forEach((item) => {
+            let p = document.createElement("p");
+            p.innerText ="  $"+item.StartingPrice;
+            list5.append(p);
+        });
+
+// function that gets the average of the initial
+// data being displayed
+function average(items)
+
+           {
+            const arr = Object.values(items);
+            const sum = (prev, cur) => ({StartingPrice: prev.StartingPrice + cur.StartingPrice});
+            const avg = arr.reduce(sum).StartingPrice / arr.length;
+            return (avg); 
+            }
+
+// Displays the average by calling the average function and using the average
+// price id to specific where to display
+const  list2=document.querySelector("#averagePrice")
+     
+            let p = document.createElement("p");
+            p.innerText = "  $ "+average(items);
+            list2.append(p);
+  
+     
+const counter=0;
+
+//runs the functin addFreelancer every 3 seconds.
+
+setInterval(addFreelancers ,3000);
+
+
+function addFreelancers(){
+
+//defines array of objects (data)
+const items2 =[{Name:"Alice",Occupation:"Writer",StartingPrice:30},
+              {Name:"Bob",Occupation:"Teacher",StartingPrice:50},
+              {Name:"Carol",Occupation:"Programmer",StartingPrice:70}             
+             ];
+
+//defines array of names and randomly selects a name
+const freelancerName = ["Mike","John","Mary","Sam","Steve","Anna","Kelly","joe","Katherine","Kathy","Jeff","Jamnes","Tom","Thomas"];
+const randomName= freelancerName[Math.floor(Math.random()*freelancerName.length)];
+
+//defines array of occupation and randomly selects an occupation
+const freelancerOccupation = ["Carpenter","Cashier","Lawyer","Professor","Doctor","Janitor","Mechanic","Vet","Plumber","Scientist"];
+const randomOccupation=freelancerOccupation[Math.floor(Math.random()*freelancerOccupation.length)];
+
+ //defines array of starting price  and randomly selects a starting price  
+const freelancerStartingPrice = [25,30,35,40,45,50,55,60,65,70,75,80,];
+const randomStartingPrice=freelancerStartingPrice[Math.floor(Math.random()*freelancerStartingPrice.length)];
+
+const N=randomName;
+const O=randomOccupation;
+const S=randomStartingPrice;
+
+//pushes the randomly selected data to the items2 array of objects   
+items2.push({Name:N,Occupation:O,StartingPrice:S});
+
+
+//creates element and uses the dataDisplyName to display
+// the randomly selected name.
+const  list6=document.querySelector("#dataDisplayName")
+     const P = document.createElement("p");
+            P.innerText = randomName;
+            list6.append(P);
+
+//creates element and uses the dataDisplyOc ID to display
+// the randomly selected Occupation.         
+const  list7=document.querySelector("#dataDisplayOc");
+      const T= document.createElement("p");
+            T.innerText =randomOccupation;
+            list7.append(T);
+
+//creates element and uses the dataDisplySP ID to display
+// the randomly selected starting price.       
+const  list8=document.querySelector("#dataDisplaySP")
+      const M= document.createElement("p");
+            M.innerText = " $"+randomStartingPrice;
+            list8.append(M);
+
+
+//function that calculates the average starting price of
+//the initial data add and the add data
+function average2(items2)    
+   {
+     const arr = Object.values(items2);
+     const sum = (prev, cur) => ({StartingPrice:prev.StartingPrice + cur.StartingPrice});
+     const avg =arr.reduce(sum).StartingPrice/ arr.length;
+     return (avg); 
+   }
+
+// Displays the average by calling the average2 function and using the average
+// price id to specific where to display
+const  list2=document.querySelector("#averagePrice")
+
+    // let p = document.createElement("p");
+     p.innerText = "  $ "+average2(items2);
+     list2.append(p);
+
+   
+}
+
+</script>
+
+</body>
+
+</html>
