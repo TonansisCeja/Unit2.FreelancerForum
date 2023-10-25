@@ -1,4 +1,4 @@
-/*
+
 const items =[{Name:"Alice ",Occupation:" Writer ",StartingPrice:30},
               {Name:"Bob ",Occupation:" Teacher ",StartingPrice:50},
               {Name:"Carol ",Occupation:" Programmer ",StartingPrice:70}             
@@ -58,7 +58,6 @@ const counter=0;
 
 setInterval(addFreelancers ,3000);
 
-
 function addFreelancers(){
 
 //defines array of objects (data)
@@ -68,7 +67,7 @@ const items2 =[{Name:"Alice",Occupation:"Writer",StartingPrice:30},
              ];
 
 //defines array of names and randomly selects a name
-const freelancerName = ["Mike","John","Mary","Sam","Steve","Anna","Kelly","joe","Katherine","Kathy","Jeff","Jamnes","Tom","Thomas"];
+const freelancerName = ["Mike","John","Mary","Sam","Steve","Anna","Kelly","joe","Katherine","Kathy","Jeff","James","Tom","Thomas"];
 const randomName= freelancerName[Math.floor(Math.random()*freelancerName.length)];
 
 //defines array of occupation and randomly selects an occupation
@@ -129,4 +128,3 @@ const  list2=document.querySelector("#averagePrice")
 
    
 }
-*/
